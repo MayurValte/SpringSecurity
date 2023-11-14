@@ -1,0 +1,31 @@
+<!-- logback-spring.xml -->
+
+<configuration>
+
+    <!-- Appender for console -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender for file -->
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>C:/Users/mayur/OneDrive/Desktop/Logs/app.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set root logger level and add appenders -->
+    <root level="OFF"> <!-- Set the root logger level to OFF -->
+        <appender-ref ref="console" />
+        <!-- No appender-ref for file, as we want to exclude root logger logs -->
+    </root>
+
+    <!-- Configure the logger for your application packages -->
+    <logger name="com.security" level="INFO" additivity="false">
+        <appender-ref ref="file" />
+    </logger>
+
+</configuration>
